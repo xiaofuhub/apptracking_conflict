@@ -2,6 +2,8 @@
 forward
 global type w_openwithparm1 from window
 end type
+type cb_1 from commandbutton within w_openwithparm1
+end type
 type mle_1 from multilineedit within w_openwithparm1
 end type
 end forward
@@ -16,6 +18,7 @@ windowtype windowtype = response!
 long backcolor = 67108864
 string icon = "AppIcon!"
 boolean center = true
+cb_1 cb_1
 mle_1 mle_1
 end type
 global w_openwithparm1 w_openwithparm1
@@ -25,11 +28,14 @@ type variables
 end variables
 
 on w_openwithparm1.create
+this.cb_1=create cb_1
 this.mle_1=create mle_1
-this.Control[]={this.mle_1}
+this.Control[]={this.cb_1,&
+this.mle_1}
 end on
 
 on w_openwithparm1.destroy
+destroy(this.cb_1)
 destroy(this.mle_1)
 end on
 
@@ -62,6 +68,21 @@ event timer;//closewithreturn(this,)
 //
 //closewithreturn(this,lhc_Client)
 end event
+
+type cb_1 from commandbutton within w_openwithparm1
+integer x = 1019
+integer y = 584
+integer width = 402
+integer height = 112
+integer taborder = 20
+integer textsize = -10
+integer weight = 400
+fontcharset fontcharset = ansi!
+fontpitch fontpitch = variable!
+fontfamily fontfamily = swiss!
+string facename = "Arial"
+string text = "none"
+end type
 
 type mle_1 from multilineedit within w_openwithparm1
 integer x = 18
